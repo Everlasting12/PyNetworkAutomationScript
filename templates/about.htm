@@ -1,0 +1,96 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+<style>
+
+
+</style>
+{% block body %}
+
+
+<div class="container-fluid">
+    
+    
+    <div class=" container  my-3" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+        <h1 class="text-center text-primary py-4">About Us</h1>
+        <div class="row mt-4 bg-grey" >
+            <div class="col-12 col-sm-6 py-2">
+                <img class="img-fluid" src="{% static 'images/about_1.png' %}" alt="about" >
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <br>
+                <h2 class="font_poppins text-justify px-3">We are PyNAS.</h2>
+                <br>
+                <p class="h5 font_poppins text-justify px-3">PYNAS is a web application based on Network Automation providing several scripts like 'Host Discovery', 'Port scanning', and for better understanding please check our scripts. User should install scripts into their system and run for monitoring their local network and keep track of logs. Network security is very important and we  at pynas are trying to keep your network safe from intruders.</p>
+            </div>
+        </div>
+    
+        
+        <div class="row bg-light mt-4" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100" data-aos-duration="2000">
+            <div class="col-12 col-sm-6">
+                <br>
+                <h2 class="font_poppins text-justify px-3">Our Goal</h2>
+                <br>
+                <p class="h5 font_poppins text-justify px-3">We at PYNAS help to keep you updated about your Network. Most of ransom, DDoS, spoofing etc. such attacks target the network of small and large organizations. From our side, we are trying to keep your network safe and secure with providing automation services to monitor your network daily.
+                </p>
+            </div>
+            <div class="col-12 col-sm-6 px-5">
+                <img class="img-fluid mx-auto d-block" height="320px" width="320p" src="{% static 'images/goal.jpg' %}" alt="goal">
+            </div>
+        </div>
+
+    <div  data-aos="zoom-in" data-aos-offset="350" data-aos-delay="50" data-aos-duration="1000">
+
+        <h1 class="text-center text-primary">Our Team</h1><br>
+        <div class="row bg-grey mt-4 py-4">
+        
+        
+            <div class="col-12 col-sm-6">
+            
+                <div class="card border-0 bg-white container-fluid py-2" style="width: 350px;">
+                    <img src="{% static 'images/Team/Sidhesh.jpg' %}" class="m-auto rounded-circle " width="110px" height="110px" alt="Sidhesh Parab">
+                    <div class="card-body mt-3 mb-3 mx-auto w-75 " >
+                        <h5 class="card-title text-center">Sidhesh Parab</h5>
+                        <p class="card-text text-center"> 
+                         Full-Stack Web Developer</br>
+                        Python-Django Developer.
+                        </p>
+                        <br>
+                        <p class="card-footer border-t-1 bg-white text-center">Technologies known:</p>
+                        <p class="text-center">Java, Python,<br/>Django, Bootstrap, <br>Adobe Xd <br>HTML5 and CSS3</p>
+                        <div class="text-center">
+                            <a id="linkedin_icon" href="https://www.linkedin.com/in/sidhesh-parab-5632561b9" target="_blank" class="m-0 "><i  class="fa fa-linkedin rounded-circle bg-info text-white p-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-sm-6">
+            
+                <div class="card border-0 bg-white container-fluid py-2" style="width: 350px;">
+                    <img src="{% static 'images/Team/Hrishikesh.jpg' %}" class="m-auto rounded-circle" width="110px" height="110px" alt="Sidhesh Parab">
+                    <div class="card-body mt-3 mb-3 mx-auto w-75 h-100 ">
+                        <h5 class="card-title text-center">Hrishikesh Rane</h5>
+                       <p class="card-text text-center">Certified Ethical Hacker,</br>Network and Web Penetration Tester,
+                        <br>Anti Phishing Reporter at Anti Cyber Crime Society</p>
+                        <p class="card-footer border-t-1 bg-white text-center">Technologies known:</p>
+                        <p class="text-center">Networking ( CCNA ),<br/>Linux Administration</p>
+                        <div class="text-center">
+                            <a id="linkedin_icon" href="https://www.linkedin.com/in/hrishikesh-rane-094594200" target="_blank" class="m-0 "><i  class="fa fa-linkedin rounded-circle bg-info text-white p-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock body %}

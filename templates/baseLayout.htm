@@ -1,0 +1,252 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyNAS | {% block title %}{% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   
+</head>
+
+<body >
+<div data-aos="fade-down" data-aos-delay="0" data-aos-duration="1000">
+<div class="container-fluid bg-dark text-light pt-3 pb-3" >
+    <p class="text-center h3 font-weight-bold pb-1" id="website_title">Welcome to PyNetwork Automation Scripts !</p>
+
+</div>
+<nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="text-decoration-none h3 mr-5 font-weight-bolder" href="{% url 'home' %}">PyNAS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{home}}" href="{% url 'home' %}"><i class="fa fa-home pr-2"
+                                                                        aria-hidden="true"></i>HOME</a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{services}}" href="{% url 'services' %}"><i class="fa fa-briefcase pr-2"
+                                                                            aria-hidden="true"></i>SERVICES</a>
+            </li>
+
+            <li class="nav-item ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{tutorial}}" href="{% url 'tutorials' %}"><i class="fa fa-info-circle pr-2 "
+                                                                             aria-hidden="true"></i>TUTORIALS</a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{contact}}" href="{% url 'contact' %}"><i class="fas fa-envelope pr-2"></i>CONTACT</a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{about}}" href="{% url 'about' %}"><i class="fas fa-address-card pr-2"></i>ABOUT US</a>
+            </li>
+            <li class="nav-item ml-2">
+                <div class="dropdown show">
+                    <a class="text-warning h6 pr-3 nav-link dropdown-toggle {{user}}" href="" role="button" id="dropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user pr-2"
+                           aria-hidden="true"></i>
+                        {% if user.is_authenticated %}
+
+                        Welcome , {{user.first_name}}
+                        {% else %}
+                        USER
+                        {% endif %}
+                    </a>
+
+                    <div class="dropdown-menu bg-none outline-none " aria-labelledby="dropdownMenuLink">
+                        {% if user.is_authenticated %}
+                        <a class="dropdown-item text-none" id="drop1" href="logout">Log Out</a>
+                        <a class="dropdown-item text-none" id="drop1" href="password_change">Change Password</a>
+                        {% else %}
+                        <a class="dropdown-item text-none" id="drop2" href="registration">Register</a>
+                        <a class="dropdown-item text-none" id="drop3" href="login">Log In</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </li>
+
+            
+           
+
+            {% if user.is_superuser %}
+            <li class="nav-item ml-2">
+                <a class="text-warning h6 pr-3 nav-link {{addscript}}" href="{% url 'addscriptfile' %}"><i class="fa fa-file-code-o pr-2"
+                aria-hidden="true"></i>Add Script</a>
+
+                {% comment %} in {% url 'we give the value of name attribute defined in the file : urls.py ' %} {% endcomment %}
+            </li>
+            {% endif %}
+
+           
+
+        </ul>
+        {% block searchbox %} {% endblock searchbox %}
+       
+    </div>
+</nav>
+</div>
+
+<main>
+{% block body %}
+{% endblock body %}
+</main>
+
+<!-- Footer -->
+<footer id="footer_fixed" class="footer mt-auto font-small indigo bg-dark" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000">
+
+    <!-- Footer Links -->
+    <div class="container text-light">
+
+        <!-- Grid row-->
+        <div class="row text- text-center  pt-5 mb-3">
+
+            <!-- Grid column -->
+            <div class="col-sm-2">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="home" class="nav-link">HOME</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-sm-2">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="services" class="nav-link">SERVICES</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-sm-2">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="tutorials" class="nav-link">TUTORIALS</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-sm-2">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="contact" class="nav-link">CONTACT</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-sm-2">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="about" class="nav-link">ABOUT</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+
+        <!-- Grid row-->
+        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+            <!-- Grid column -->
+            <div class="col-md-8 col-12 mt-5">
+                <p style="line-height: 1.9rem;padding:10px 0px;">This website provides you PyNetwork
+                    Automation Scrpits which helps in Networking Field. This is only for Education purpose. The user is fully responsible for any ' Misuse '.</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+        <!-- Grid row-->
+        <div id="footer-Link-allignment" class=" d-block d-flex row pb-3 text-center">
+
+            <!-- Grid column -->
+            <div class="col">
+                <!-- Facebook -->
+                <a class="nav-item" href="https://www.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-f fa-lg white-text "> </i>
+                </a>
+            </div>
+            <div class="col">
+                <!-- Twitter -->
+                <a class="nav-item" href="https://www.twitter.com/" target="_blank">
+                    <i class="fa fa-twitter fa-lg white-text"> </i>
+                </a>
+            </div>
+            <div class="col">
+                <!-- Google +-->
+                <a class="nav-item" href="https://www.google.co.in/" target="_blank">
+                    <i class="fa fa-google text fa-lg white-text"> </i>
+                </a>
+            </div>
+            <div class="col">
+                <!--Linkedin -->
+                <a class="nav-item" href="https://www.linkedin.com/" target="_blank">
+                    <i class="fa fa-linkedin fa-lg white-text"> </i>
+                </a>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center text-light py-3">&copy;2020 Copyright:
+            <a href="home"> PyNAS.com</a>
+        </div>
+        <!-- Copyright -->
+    </div>
+</footer>
+
+
+<!-- Footer -->
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/9a74bde103.js" crossorigin="anonymous"></script>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
+
+function search_fun()
+{
+	var content =  document.getElementById('search').value;
+	window.find(content);
+	
+}
+
+</script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+</html>

@@ -1,0 +1,70 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+
+{% block title %}Add Script file {% endblock title %}
+ 
+{% block body %}
+        
+    {% if user.is_superuser %}
+{% include 'messages.htm' %}
+<div class="container my-5">
+
+    <div class="row">
+    {% comment %} Add file container {% endcomment %}
+        <div class="col-sm-5 col-12   border border-secondary" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+            <form enctype="multipart/form-data" method="POST"  action="upload_files" > 
+                {% csrf_token %}
+                    <h3 class="h3 px-3 py-2" style="background-color:#D5E8FF">Add File :</h3>
+                   
+                        {{scriptform.as_p}}
+                    
+                    <div class="text-center my-3">
+                        <input type="submit" value="&nbsp;Upload" class="btn btn-success px-4 py-2 ">
+                        <input type="reset" value="Cancel" class="btn btn-danger px-4 py-2">
+                    </div>    
+            </form>
+        </div>
+ 
+        {% comment %} Add file container: Complete {% endcomment %}
+
+        
+        {% comment %} Tutorial container {% endcomment %}
+        <div class="col-sm-7 col-12  border border-secondary" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+       
+            <form action="{% url 'manual_page' %}" method="post" novalidate>
+                {% csrf_token %}
+                    <h3 class="h3 py-2 px-5" style="background-color:#D5E8FF">Manual Page:</h3>
+                <div class="container mt-3">
+                    {{form.scriptName.label_tag}}
+                    {{form.scriptName}}
+                </div>
+                
+                <div class="container mt-3">
+                    {{form.preRequisites.label_tag}}
+                    {{form.preRequisites}}
+                </div>
+                
+                <div class="container mt-3">
+                    {{form.Steps.label_tag}}
+                    {{form.Steps}}
+                    <br>
+                    {{form.status.label_tag}}
+                    {{form.status}}
+                </div>
+                
+                <div class="container text-center">
+                    <input type="submit" value="&nbsp;Submit" class="btn btn-success px-4 py-2">
+                    <input type="reset" value="Cancel" class="btn btn-danger px-4 py-2">
+                </div>
+            </form>
+        </div>
+        {% comment %} Tutorial container : Completed {% endcomment %}
+    </div>
+
+
+
+
+</div>
+        <!--   Adding a Card Script    only to admin-->
+    {% endif %}
+{% endblock body %}

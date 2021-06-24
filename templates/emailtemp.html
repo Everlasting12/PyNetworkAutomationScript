@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>{{title}}</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .container{
+        margin: 100px;
+        padding: 20px;
+        border-radius: 15px;
+        background: linear-gradient(to right top,cyan,rgb(238, 7, 255));
+        box-shadow: 4px 5px 50px 1px rgb(228, 218, 218);
+        border:none;
+       
+    }
+    h3{
+      
+       color: rgb(255, 255, 255);
+       padding: 4px;
+       
+      
+    }
+    a{
+       text-decoration: none;
+       color: white!important;
+       font-weight: bold;
+   }
+   button{
+       color: white!important;
+       border: none;
+       padding: 10px 30px ;
+       background: linear-gradient(to right bottom,red,purple);
+       border-radius: 5px;
+   }
+
+
+   @media screen and (max-width: 600px) 
+   {
+
+    .container{
+        margin: 10px;
+        padding: 20px;
+        border-radius: 15px;
+        background: linear-gradient(to right top,cyan,rgb(238, 7, 255));
+        box-shadow: 4px 5px 50px 1px rgb(228, 218, 218);
+        border: oldlace 4px solid;
+       
+    }
+
+    button{
+        border: none;
+        color: white;
+        padding: 10px 30px ;
+        background: linear-gradient(to right bottom,rgb(11, 120, 51),rgb(70, 255, 175));
+        border-radius: 5px;
+    }
+    a{
+        color: white;
+    }
+ 
+    }
+    </style>
+    </head>
+<body>
+
+    <div class="container bg-dark text-light">
+            <h3>{{content}}</h3>
+            <button><a href="http://127.0.0.1:8000/login">Login</a></button>
+            
+            
+    </div>
+</body>
+</html>

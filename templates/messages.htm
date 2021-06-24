@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- Messages from Django Backend about Username , Password and EmailId -->
+{% if messages %}
+{% for message in messages %}
+    {% if message.tags == 'error'%}
+    
+        <h4 class="alert h-5 alert-danger
+        alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </h4> 
+    {% elif message.tags == 'success'%}   
+        <h4 class="alert h-5 alert-success alert-dismissible fade show"
+            role="alert">{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </h4>
+    {% elif message.tags == 'info'%}   
+    <h4 class="alert h-5 alert-primary alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h4>
+    {% endif %}
+{% endfor %}
+{% endif %}         
+

@@ -1,0 +1,71 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+{% block title %}Registration{% endblock title %}
+{% block body %}
+
+
+<div class="container col-sm-6 d-block rounded py-3 my-5 AllFormsBackShadows ">
+   
+    <form action="registration " method="POST">
+                {% csrf_token %}
+                <table class="table table-bordered table-hover my-5 ">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="text-center h3 py-3 text-primary"> Registration Form</th>
+                        </tr>
+                    </thead>
+
+                    
+                    {% include 'messages.htm' %}
+                    <a class="btn btn-outline-primary  {{about}}" href="{% url 'login' %}">Login&nbsp;&nbsp;<i class="fas fa-sign-in-alt"></i></a>  
+
+                    <tbody>
+                        <tr>
+                            <td><label class="ml-5 font-weight-bold"  for="email">Email address:</label></td>
+                            <td><input type="email" class="form-control" placeholder="Enter Email" id="email"
+                                       name="email" required></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="ml-5 font-weight-bold" for="firstName">First Name :</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter First Name" id="firstName"
+                                    name="first_name" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ml-5 font-weight-bold"  for="lastName">Last Name:</label></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Last Name" id="lastName"
+                                    name="last_name" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ml-5 font-weight-bold"  for="uname">Username:</label></td>
+                            <td> <input type="text" class="form-control" id="uname" placeholder="Enter username"
+                                    name="username" required></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="ml-5 font-weight-bold" for="pwd">Password:</label></td>
+                            <td><input type="password" class="form-control" placeholder="Enter Password" id="pwd"
+                                       name="password1" required></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="ml-5 font-weight-bold" for="pwd">Confirm Password:</label></td>
+                            <td><input type="password" class="form-control" placeholder="Enter Password Again"
+                                    id="Confpwd" name="password2" required>
+                            </td>
+                        </tr>
+
+                       
+                        
+
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <button type="submit" class="btn btn-success px-5 py-2 m-2">Register</button>
+                                <button type="reset" class="btn btn-danger px-5 py-2 m-2">Reset</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+           
+</div>
+        
+
+{% endblock body %}

@@ -1,0 +1,87 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+{% block title %}Services{% endblock title %}
+{% block searchbox %}
+    {% if user.is_authenticated %}
+        <div>
+            <form class="d-block d-flex my-2 my-lg-0" action="search" method="get">
+                {% csrf_token %}
+                    <input class="nav-item form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" >
+                    <button class="nav-item btn btn-warning px-3 ml-2 my-0" type="submit"><i class="fa fa-search"></i></button> 
+            </form>
+        </div>
+    {% endif %} 
+{% endblock searchbox %}
+
+{% block body %}
+
+    {% include 'messages.htm' %}
+
+
+{% if user.is_authenticated %}
+    <div class="container-fluid mt-5 ml-5">
+        <h2 class="">Search Results : </h2>
+    {% if scriptfiles|length < 1 %}
+    <p>No search results.</p>
+    <p>Your search : <b>{{query}}</b> - did not match to any script files. </p>
+    <p>Suggestions : </p> 
+        <ul>
+            <li>Make sure all words are spelled correctly.</li>
+            <li>Try more general kwywords</li>
+            <li>Try different keywords</li>
+            <li>Try fewer keywords</li>
+        </ul>
+    {% endif %}
+  
+   
+    </div>
+        <div class="row m-0 container-fluid p-4">
+
+            {% for scriptfile in scriptfiles %}
+                <div class="card m-2 border-secondary" style="width:18rem;">
+                    <div class="card-header font-weight-bold" style="background-color:#D5E8FF">{{scriptfile.script_name}}</div>
+                
+                {% comment %}This is delete button for the files only admin can delete the files in Admin Panel and Admin services page {% endcomment %}
+                
+                    {% if user.is_superuser %}
+             <div class="card-footer text-center border bg-white">
+                <div class="d-flex">
+
+                    <div class="mr-2">
+                            <a class="btn btn-info py-2 px-2" data-bs-toggle="tooltip"  title="Edit this Script" href="{%  url 'update_script' pk=scriptfile.id  %}"><i class="fa fa-pencil fa-lg mx-2"></i>Edit</a>
+                    </div>
+                    <div >
+                        <form action="{% url 'deleteScript' pk=scriptfile.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger px-2 py-2" data-bs-toggle="tooltip"  title="Delete this Script"><i class="fa fa-trash text-white fa-lg mx-2"></i>Delete</button>
+                        </form>
+                    </div>
+               
+                </div>
+            
+            </div>
+
+            {% endif %}
+
+
+                {% comment %} admin delete panel service page comeplete {% endcomment %}
+                    <div class="card-body text-success">
+                        <p class="card-text text-justify">{{scriptfile.description|truncatewords:25}}</p>
+                    </div>
+                    <div class="card-footer border bg-white">
+                        <a href="{{scriptfile.script_file.url}}"  Download class="btn btn-primary">
+                        <i class="fa fa-download mr-3" aria-hidden="true"></i>Download</a>
+                        <a href="{% url 'tutorial_view' scriptfile.id %}" class="btn btn-warning px-2"> <i class="fa fa-book ml-0 px-1 "></i>Tutorial</a>
+                    </div>
+                    <div class="card-footer  bg-transparent ">
+                        <p> Author : {{scriptfile.script_author}}</p>
+                        <p> Date : {{scriptfile.date}} </p>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+        
+{% endif %}
+  
+
+{% endblock body %}

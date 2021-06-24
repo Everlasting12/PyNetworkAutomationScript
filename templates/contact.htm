@@ -1,0 +1,62 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+{% block body %}
+
+    {% include 'messages.htm' %}
+
+<h2 class="text-center my-2 font_poppins h1">Contact Us</h2>
+<div class="container rounded  my-3 AllFormsBackShadows">
+    
+    <img src="{% static 'images/1.jpg'%}" class="img-fluid my-3" alt="Cinque Terre">
+</div>
+<div class="container  rounded AllFormsBackShadows" data-aos="zoom-out" data-aos-delay="50" data-aos-duration="1000">
+    <form action="contact" method="POST" >
+        {% csrf_token %}
+
+        <table class="table table-bordered mt-5 table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center h3 py-3 "> Contact Form !</th>
+                </tr>
+            </thead>
+        
+            
+                            
+            <tbody>
+                <tr>
+                    <td class=" py-4"><label for="uname">Username <sup class="font-weight-bolder text-danger">*</sup>:</label></td>
+                    <td class=" py-4"> <input type="text" class="form-control" id="uname"
+                            placeholder="Enter username" name="uname" required></td>
+                </tr>
+                <tr>
+                    <td class=" py-4"><label for="email">Email address<sup class="font-weight-bolder text-danger">*</sup>:</label></td>
+                    <td class="py-4 "><input type="email" class="form-control" placeholder="Enter Email" id="email" name="email" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-4 "><label for="contactNo">Enter Contact Number :</label></td>
+                    <td class="py-4 "><input type="text" class="form-control" placeholder="Enter Phone Number"
+                                             minlength="10" maxlength="12" id="contactNo" name="phone">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-4 "><label for="msg">Enter Message<sup class="font-weight-bolder text-danger" >*</sup> :</label></td>
+                    <td class="py-4 "><textarea type="areatext" rows="3" cols="20" class="form-control textarea"
+                            placeholder="Enter Message" id="msg" required minlength="10" maxlength="2000" name="desc"></textarea> </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center py-5">
+
+                        <button type="submit" class="btn btn-primary font-weight-bolder px-5 py-2 m-2 shadow-lg ">SUBMIT</button>
+                        <button type="reset" class="btn btn-danger font-weight-bolder px-5 py-2 m-2 shadow-lg ">CANCEL</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+{% endblock body %}
+

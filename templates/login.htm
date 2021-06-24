@@ -1,0 +1,49 @@
+{% extends 'baseLayout.htm' %}
+{% load static %}
+{% block title %}Log In{% endblock title %}
+{% block body %}
+
+<div class="container d-block col-sm-6 rounded my-5 py-5 AllFormsBackShadows">
+    <form action="login" method="POST">
+        {% csrf_token %}
+
+        <table class="table table-bordered table-hover ">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center h3 py-3">Login Form</th>
+                </tr>
+            </thead>
+           
+           {% include 'messages.htm' %}
+
+            <tbody>
+                <tr>
+                    <td class="py-4 pl-5  font-weight-bold"><label for="logInUname">Username:</label></td>
+                    <td class="py-4  pl-5 pr-5"> <input type="text" class="form-control" id="logInUname"
+                            placeholder="Enter username" name="username" required></td>
+                </tr>
+                <tr>
+                    <td class="py-4 pl-5 font-weight-bold"><label for="logInpwd">Password:</label></td>
+                    <td class="py-4 pl-5 pr-5"><input type="password" class="form-control" placeholder="Enter Password"
+                            id="logInpwd" name="password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center pl-5">
+                        <a href="{% url 'password_reset' %}" class="text-primary">Forgot password ?</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center py-5">
+
+                        <button type="submit" class="btn btn-success px-5 py-2 m-2">Log In</button>
+                        <button type="reset" class="btn btn-danger px-5 py-2 m-2">Reset</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+    <div id="VisitorMsg " style="margin: auto;display: flex;justify-content: center; background-color: black ;color: white;height: 200px;" >
+        <p class="text-light font-weight-bolder text-center">This is only for
+            Education purpose. The user is fully responsible for any ' Misuse '.
+            If you Agree then click on <b>Yes</b> button.
+        </p>
+        <button id="notagree" class=" btn-danger" onclick='whatThe()'>No</button>
+        <button id="agreed" class=" btn-success" onclick='yesClicked()'>Yes</button>
+    </div>
+
+</body>
+<script>
+    function whatThe(){
+        alert('You have clicked on No button !!');
+    }
+      
+    function yesClicked(){
+        alert('You accepted our policy !');
+        location.href='./home';
+    }
+</script>

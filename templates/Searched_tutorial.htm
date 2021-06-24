@@ -1,0 +1,119 @@
+
+{% extends 'baseLayout.htm' %}
+{% block title %}Tutorials information{% endblock title %}
+{% load static %}
+
+
+{% block body %}
+
+<h2 id="titleofManualPage" class="text-center mt-3 bg-warning p-3">Scripts Manual Page</h2>
+
+<div class="container-fluid row my-4 mx-0">
+
+<!-- This is Script lIst : left side  -->
+
+    <div class="container  col-sm-3 bg-light ">
+        <ul class="list-group">
+        <br>
+        <li class="list-group-item"><a href="{% url 'tutorials' %}" class="btn btn-default">Manual Page</a></li>
+        <br>
+        {% for scriptfile in scriptfiles %}
+            <li class="list-group-item"><a class="btn btn-default" href="{% url 'tutorial_view' scriptfile.id %}">{{scriptfile.script_name}}</a></li>
+        {% endfor %}   
+        <br>    
+        </ul>
+    </div>
+<!-- This is Script lIst : left side : Completed -->
+     
+<!-- This is  Tutorial Page : Right side  -->
+    <div class="container col-sm-9  RightManualPage">
+        
+                    <div id="host_discovery_script" class="ManualPageElements container my-3 ">
+                        <h3 class="text-primary alert alert-info py-3 text-dark px-2"> {{tut.script_name}} 
+                        {% if user.is_authenticated %}
+                            <a href="{{scf.script_file.url}}" download class="float-right bg-info text-center text-light m-0 p-2 rounded"><i class="fa fa-download "></i></a>
+                        {% endif %}
+                        </h3>
+
+                        <h5>Script Description :</h5>
+                        <p>{{scf.description}}</p>
+                        
+                        <h5>Prerequisites:</h5>
+
+                        <p>{{tut.prerequisite|linebreaks}}</p>
+                        <p>Every Script is required some <b>python packages</b>, to know more about these packages, <a href="#manual_page_prerequisites">click here</a></p>
+                        
+                        <br>
+                        <h5>Steps:</h5>
+                        <p>{{ tut.steps|linebreaksbr }}</p>
+                        
+                        <p class="float-right">Post : {{tut.date}}</p>
+
+                        <a href="#titleofManualPage">Click to Go back</a>
+
+                    </div>
+
+
+                    <hr>
+
+
+                     <div class="container my-4 p-3"  id="manual_page_prerequisites">
+                        <h4>To Run Any Script Files available in Services menu, Client's Machine should have softwares like : </h4>
+                        <ul>
+                            <li>Python 2.0 or higher version.</li>
+                            <li>Nmap v7.91</li>
+                        </ul>
+                        <h5>Steps to install Python v2.0 or Higher version :</h5>
+                        <p>Step 1 : Visit the Official Python website to download the Python </p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.python.org/" class="btn btn-info" target="_blank">Python Official Website&nbsp;&nbsp;<i class="fa fa-external-link"></i></a>
+                        <br><br>
+                        <p>Step 2 : Select the proper version intended for your Operating System.</p>
+                        <ul>
+                        <li>Windows OS : &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.python.org/downloads/windows/" class="btn btn-info" target="_blank"><i class="fa fa-windows"></i>&nbsp;&nbsp;Python for Windows</a>
+                        <a href="https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe" class="btn btn-info" target="_blank"><i class="fa fa-download"></i>&nbsp;&nbsp;Python for Windows v3.9.4</a>
+                        </li><br>
+                        <li>Linux based OS : <a href="https://www.python.org/downloads/source/" class="btn btn-info px-4" target="_blank"><i class="fa fa-linux"></i>&nbsp;&nbsp;Python for Linux</a></li>
+                        </ul>
+                        <p>Step 3 : Make sure to check the Add Python -v to PATH option while installing python.</p>
+                        <div class="container text-center">
+                        <img src="{% static 'images/Tutorial/python-setup.png' %}" alt="Add to Path" class="img-fluid border border-dark" width="500px"  srcset="">
+                        </div>
+                        <br><br>
+
+                        {% comment %} Nmap installation {% endcomment %}
+                        <h5>Steps to install Nmap v7.91 or Higher version :</h5>
+
+                        <p>Step 1 : Visit the official website of Nmap Installer to download nmap v7.91</p>
+                            <a href="https://nmap.org/download.html" target="_blank" class="btn btn-info" rel="noopener noreferrer"><i class="fa fa-eye"></i>&nbsp;&nbsp;Nmap&nbsp;&nbsp;<i class="fa fa-external-link fa-sm"></i></a>
+                            <br><br>
+                            <p>Step 2 : Select the proper version intended for your Operating System.</p>
+                            <ul>
+                                <li>Windows OS : 
+                                <a href="https://nmap.org/dist/nmap-7.91-setup.exe" class="btn btn-info" target="_blank"><i class="fa fa-download"></i>&nbsp;&nbsp; Windows OS Nmap v7.91</a>
+                                </li><br>
+                                <li>Linux based OS : <a href="https://nmap.org/dist/nmap-7.91-1.x86_64.rpm" class="btn btn-info px-4" target="_blank"><i class="fa fa-linux"></i>&nbsp;&nbsp;Nmap for Linux</a></li>
+                            </ul>
+
+                            <p>Step 3 : Make sure to add Nmap folder location address in Environmental Variable in Windows OS to PATH option while installing nmap, if not added automatically.</p>
+                                <ul>
+                                    <p>Steps to add a path variable in Windows OS :</p>
+                                    <li>Step 1 : Go to This PC, on Desktop</li>
+                                    <li>Step 2 : Right Click -> Properties -> Advanced System Settings (Left side of the screen) </li>
+                                    <li>Step 3 : Click on Environment Variable -> Locate 'path' or 'PATH' variable in User Variables and System Variables.</li>
+                                    <li>Step 4 : Click on path and click on Edit. Here path for Python would aleardy be added, now we need to add the nmap path</li>
+                                    <li>Step 5 : Locate the nmap folder in your local system(C: -> Program Files or Program Files(x86) -> Nmap)</li>
+                                    <li>Step 6 : Copy the path and paste in edit section of Environmenat Variables</li>
+                                    <br>
+                                    <div class="container text-center">
+                                        <img src="{% static 'images/Tutorial/nmap-setup.png' %}" alt="Add to Path" class="img-fluid border border-dark" width="500px"  srcset="">
+                                    </div>
+                                    <br><br>
+                                    <h5>Now Scripts will run smoothly.</h5>
+                                </ul>
+
+                    </div>
+    </div>
+<!-- This Tutorial Page : Right side  -->
+</div>
+
+{% endblock body %}

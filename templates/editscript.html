@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Script{% endblock title %}
+
+{% block body %}
+{% include 'messages.htm' %}
+<br>
+<div class="container border border-dark rounded my-5 " >
+    <form enctype="multipart/form-data" method="POST"  action="{% url 'edit_script' script_info.id %}" > 
+        <h3 class="h3 px-3 py-2" style="background-color:#D5E8FF;">Edit / Update File :</h3>
+                {% csrf_token %}
+                 
+
+                <div class="container-fluid">
+                
+                {{form.as_p}}
+
+                </div>
+
+                    <div class="bg-white d-block text-center py-3">
+                        <input type="submit" value="&nbsp;Upload" class="btn btn-success px-4 py-2 ">
+                        <input type="reset" value="Cancel" class="btn btn-danger px-4 py-2">
+                    </div>    
+
+    </form>
+
+        <a href="{% url 'services' %}" class="btn btn-info my-2 btn-sm">Go to Services</a>
+</div>
+
+{% endblock body %}
+
+
+
+  <!--
+
+                   <div class=" bg-transparent  my-3">
+                        <label for="header_name" clastext-lefts="text-left ">Script Name :</label>
+                        <input type="text" id="header_name" name="header_name" value="{{script.script_name}}" placeholder="Enter Script Name" class="mx-0  form-control" required>
+                    </div>
+                    <div class=" my-3">
+                        <div class=" text-leftmb-2">
+                            <label for="msg" class="text-left">Script Description :</label>
+                            <input type="text" name="description" id="msg"  class="form-control" placeholder="Enter description in short : 500 characters only"  value="{{script.description}}">
+                        </div>
+
+                    <div class="container px-0 my-3">
+                        <label for="myfile" class="text-left">Select Script file to upload :</label>
+                        <input type="file" name="myfile" id="myfile" files="{{script.script_file}}" class="py-2 px-2 rounded w-100" style="background-color:rgb(197, 197, 197);color:rgb(0, 21, 255);"  required>
+                    </div>
+
+                    </div>
+                    <div class=" bg-white my-3 ">
+                        <label for="author" cltext-leftass="">Script Author Name :</label>
+                        <input type="text" name="author_name" id="author" placeholder="Enter Author Name" class="form-control  " value="{{script.script_author}}">
+                    </div>
+                   -->
